@@ -73,3 +73,54 @@ func Day2_part1() {
 	println(sum)
 }
 
+func Day2_part2() {
+	content, err := os.ReadFile("./input/d2.txt")
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
+	sum := 0
+
+	for _, line := range strings.Split(string(content), "\n") {
+		if line == "" {
+			continue
+		}
+
+		pregame := strings.Split(line, ":")
+
+		min_red := 0
+		min_green := 0
+		min_blue := 0
+		for _, rounds := range strings.Split(pregame[1], ";") {
+
+			for _, cube := range strings.Split(rounds, ",") {
+
+				cubeAmount, err := strconv.Atoi(strings.Split(cube, " ")[1])
+				if err != nil {
+					println("Error of int conversion")
+					continue
+				}
+
+				cubeType := strings.Split(cube, " ")[2]
+				switch cubeType{
+				case "red":
+					if cubeAmount > min_red {
+						min_red = cubeAmount
+					}
+				case "green":
+					if cubeAmount > min_green {
+						min_green = cubeAmount
+					}
+				case "blue":
+					if cubeAmount > min_blue {
+						min_blue = cubeAmount
+					}
+				}
+			}
+		}
+		power := min_blue * min_green * min_red
+		sum += power
+	}
+	println(sum)
+}
+
