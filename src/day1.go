@@ -1,18 +1,14 @@
-package main
+package aoc2023
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	// day1_part1()
-	day1_part2()
-}
-func day1_part1() {
-	content, err := ioutil.ReadFile("../input/d1p1.txt")
+func Day1_part1() {
+	content, err := os.ReadFile("./input/d1p1.txt")
 	if err != nil {
 		fmt.Print(err)
 		return
@@ -33,8 +29,8 @@ func day1_part1() {
 	fmt.Print(sum)
 }
 
-func day1_part2() {
-	content, err := ioutil.ReadFile("../input/d1p1.txt")
+func Day1_part2() {
+	content, err := os.ReadFile("../input/d1p1.txt")
 	if err != nil {
 		fmt.Print(err)
 		return
